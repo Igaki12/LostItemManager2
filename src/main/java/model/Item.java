@@ -9,7 +9,7 @@ public class Item implements Serializable {
 	private int found_place = 0;
 	private String found_at = "2001/01/01 00:00:00";
 	private String photo = null;
-	private String pass = null;
+	private int pass = 0;
 	private int delete_flag = 0;
 	private String posted_at = "2001/01/01 00:00:00";
 	private String updated_at = null;
@@ -47,19 +47,19 @@ public class Item implements Serializable {
 		this.found_at = found_at;
 	}
 
-	public String getImg() {
+	public String getPhoto() {
 		return photo;
 	}
 
-	public void setImg(String photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 
-	public String getPass() {
+	public int getPass() {
 		return pass;
 	}
 
-	public void setPass(String pass) {
+	public void setPass(int pass) {
 		this.pass = pass;
 	}
 

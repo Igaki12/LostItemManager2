@@ -5,9 +5,17 @@
 
 <%File fs = new File("/Search"); 
   String pathS = fs.getName();
-  File fr = new File("/Register");
-  String pathR = fr.getName();
+  File ft = new File("/Top");
+  String pathT = ft.getName();
 %>
+<%String today = (String)request.getAttribute("today");
+String daysAgo1 = (String)request.getAttribute("daysAgo1");
+String daysAgo2 = (String)request.getAttribute("daysAgo2");
+String daysAgo3 = (String)request.getAttribute("daysAgo3");
+String daysAgo7 = (String)request.getAttribute("daysAgo7");
+String daysAgo14 = (String)request.getAttribute("daysAgo14");
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +29,7 @@
     <h3>さがす</h3>
   </header>
 
-  <form method="post" action="<%=pathS %>" name="search_form">
+  <form method="post" action="./<%=pathS %>" name="search_form">
     <div class="search-box">
       <div class="search-box-title">おとしたものは？</div>
       <div class="search-box-grid">
@@ -54,12 +62,12 @@
     <div class="search-box">
       <div class="search-box-title">おとした日は？</div>
       <div class="search-box-grid">
-        <input id="time1" class="radio" type="radio" value="0" name="found_at"><label for="time1">きょう</label>
-        <input id="time2" class="radio" type="radio" value="1" name="found_at"><label for="time2">きのう</label>
-        <input id="time3" class="radio" type="radio" value="2" name="found_at"><label for="time3">おととい</label>
-        <input id="time4" class="radio" type="radio" value="3" name="found_at"><label for="time4">３日前ぐらい</label>
-        <input id="time5" class="radio" type="radio" value="7" name="found_at"><label for="time5">１週間前ぐらい</label>
-        <input id="time6" class="radio" type="radio" value="14" name="found_at"><label for="time6">２週間より前</label>
+        <input id="time1" class="radio" type="radio" value="<%=today %>" name="found_at"><label for="time1">きょう</label>
+        <input id="time2" class="radio" type="radio" value="<%=daysAgo1 %>" name="found_at"><label for="time2">きのう</label>
+        <input id="time3" class="radio" type="radio" value="<%=daysAgo2 %>" name="found_at"><label for="time3">おととい</label>
+        <input id="time4" class="radio" type="radio" value="<%=daysAgo3 %>" name="found_at"><label for="time4">３日前ぐらい</label>
+        <input id="time5" class="radio" type="radio" value="<%=daysAgo7 %>" name="found_at"><label for="time5">１週間前ぐらい</label>
+        <input id="time6" class="radio" type="radio" value="<%=daysAgo14 %>" name="found_at"><label for="time6">２週間より前</label>
       </div>
     </div>
     <div class="submit-box">

@@ -26,17 +26,28 @@ public class CalendarDate {
 		Date date = cl.getTime();
 		return date;
 	}
-	public static String DetermineFound_at(int int_found_at) {
-		Calendar cl = Calendar.getInstance();
-		cl.add(Calendar.DAY_OF_MONTH, -1*int_found_at);
-		Date date = model.CalendarDate.ParseCalendarToDate(cl);
-		String str = model.CalendarDate.ParseDateToString(date);
-		return str;	
-	}
-	public static String DeterminePosted_at() {
+	public static String StrDatetimeNow() {
 		Calendar cl = Calendar.getInstance();
 		Date date = model.CalendarDate.ParseCalendarToDate(cl);
 		String str = model.CalendarDate.ParseDateToString(date);
 		return str;
+	}
+	public static String StrDatetimeDaysAgo(int day) {
+		Calendar cl = Calendar.getInstance();
+		cl.add(Calendar.DAY_OF_MONTH, -1*day);
+		Date date = model.CalendarDate.ParseCalendarToDate(cl);
+		String str = model.CalendarDate.ParseDateToString(date);
+		return str;
+	}
+	public static Calendar ParseStrToCalendar(String str) {
+		try{
+			Date date = model.CalendarDate.ParseStrToDate(str);
+			Calendar cl = model.CalendarDate.ParseDateToCalendar(date);
+			return cl;
+		}catch(Exception e ) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+		
 	}
 }

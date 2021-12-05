@@ -22,6 +22,20 @@ public class SearchServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 		
 		request.setCharacterEncoding("UTF-8");
+		String now = model.CalendarDate.StrDatetimeNow();
+		String today = now.split(" ")[0];
+		String daysAgo1 = model.CalendarDate.StrDatetimeDaysAgo(1).split(" ")[0];
+		String daysAgo2 = model.CalendarDate.StrDatetimeDaysAgo(2).split(" ")[0];
+		String daysAgo3 = model.CalendarDate.StrDatetimeDaysAgo(3).split(" ")[0];
+		String daysAgo7 = model.CalendarDate.StrDatetimeDaysAgo(7).split(" ")[0];
+		String daysAgo14 = model.CalendarDate.StrDatetimeDaysAgo(14).split(" ")[0];
+		
+		request.setAttribute("today", today);
+		request.setAttribute("daysAgo1", daysAgo1);
+		request.setAttribute("daysAgo2", daysAgo2);
+		request.setAttribute("daysAgo3", daysAgo3);
+		request.setAttribute("daysAgo7", daysAgo7);
+		request.setAttribute("daysAgo14", daysAgo14);
 		File f = new File("WEB-INF/jsp/search.jsp");
 		String path = f.getPath();
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
@@ -33,6 +47,7 @@ public class SearchServlet extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		
 		Item item = new Item();
+//		Search側は0(指定なし)も許容する
 		String str_item_kind = request.getParameter("item_kind");
 		int item_kind = 0;
 		try{
@@ -51,19 +66,19 @@ public class SearchServlet extends HttpServlet{
 		}
 		item.setFound_place(found_place);
 		
-		String str_found_at = request.getParameter("found_at");
-		int int_found_at = 0;
-		try {
-			int_found_at = Integer.parseInt(str_found_at);
-		}catch(NumberFormatException e) {
-			int_found_at = 0;
+		String day_found_at = request.getParameter("found_at");
+		if(day_found_at == null) {
+			day_found_at = model.CalendarDate.StrDatetimeDaysAgo(365);
 		}
-		String found_at = model.CalendarDate.DetermineFound_at(int_found_at);
+		String time_found_at = model.CalendarDate.StrDatetimeNow().split(" ")[1];
+		String found_at = day_found_at +" " + time_found_at;
 		item.setFound_at(found_at);
+		
+		item.setDelete_flag(0);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("searching_item", item);
-		response.sendRedirect("/List");
+		response.sendRedirect("./List");
 
 	}
 }

@@ -64,7 +64,7 @@ header {
 input:checked + label {
   color: black;
   font-weight: bold;
-  background-color: rgb(77, 238, 77);
+  background-color: rgb(157, 209, 157);
 }
 #photo {
   display: none;

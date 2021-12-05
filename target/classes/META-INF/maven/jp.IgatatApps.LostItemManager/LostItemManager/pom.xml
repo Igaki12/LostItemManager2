@@ -3,6 +3,7 @@
   <groupId>jp.IgatatApps.LostItemManager</groupId>
   <artifactId>LostItemManager</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
 
 
 <dependencies>
@@ -13,7 +14,19 @@
 	    <version>4.0.1</version>
 	    <scope>provided</scope>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.27</version>
+    </dependency>
+    <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.11.112</version>
+    </dependency>
   </dependencies>
+  
 
   
 

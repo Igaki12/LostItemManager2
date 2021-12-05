@@ -131,6 +131,8 @@ input:checked + label {
   border-radius: 20px;
   border: solid 5px white;
   line-height: 240px;
+  margin-right: 2vw;
+  position: cover;
 }
 .check-box {
   margin: 3vh auto;

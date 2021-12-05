@@ -25,7 +25,7 @@ public class RegisterCheckServlet extends HttpServlet{
 	    HttpSession session = request.getSession();
 	    File file = new File("WEB-INF/jsp/registerCheck.jsp");
         if(session.getAttribute("registering_item") != null) {
-        	Item item = (Item)session.getAttribute("registered_item");
+        	Item item = (Item)session.getAttribute("registering_item");
         	int item_kind = item.getItem_kind();
         	String str_item_kind = null;
         	switch(item_kind) {
@@ -56,7 +56,7 @@ public class RegisterCheckServlet extends HttpServlet{
         	}
         	if(str_item_kind == null) {
         		System.out.println("エラー：再入力してください");
-        		file = new File("/Register");	
+        		file = new File("./Register");	
         	}
         	request.setAttribute("str_item_kind", str_item_kind);
         	
@@ -88,12 +88,12 @@ public class RegisterCheckServlet extends HttpServlet{
         		str_found_place = "G校";
         		break;
         	case 9:
-        		str_found_place = "H校";
+        		str_found_place = "そのほか";
         		break;
         	}
         	if(str_found_place == null) {
         		System.out.println("エラー：再入力してください");
-        		file = new File("/Register");	
+        		file = new File("./Register");	
         	}
         	request.setAttribute("str_found_place", str_found_place);
         	
@@ -101,16 +101,16 @@ public class RegisterCheckServlet extends HttpServlet{
         	String found_at = datetime_found_at.trim().split(" ")[0];
         	if(found_at == null) {
         		System.out.println("エラー：再入力してください");
-        		file = new File("/Register");
+        		file = new File("./Register");
         	}
         	request.setAttribute("found_at", found_at);
         	
 //        	写真についての箇所
         	
-        	String posted_at = item.getPosted_at();
+        	String posted_at = item.getPosted_at().split(" ")[0];
         	if(posted_at == null) {
         		System.out.println("エラー：再入力してください");
-        		file = new File("/Register");
+        		file = new File("./Register");
         	}
         	request.setAttribute("posted_at", posted_at);
         }
@@ -123,12 +123,10 @@ public class RegisterCheckServlet extends HttpServlet{
 		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		session.getAttribute("registering_item");
-//		DBに入力
+		Item item = (Item)session.getAttribute("registering_item");
 		
+		int flag = model.DAO.InsertItem(item);
 		
-		
-		session.removeAttribute("registering_item");
-		response.sendRedirect("Registered?id=~~~");
+		response.sendRedirect("./Registered");
 	}
 }

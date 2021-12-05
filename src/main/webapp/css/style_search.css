@@ -54,7 +54,7 @@ header {
 input:checked + label {
   color: black;
   font-weight: bold;
-  background-color: rgb(250, 158, 158);
+  background-color: rgb(228, 197, 197);
 }
 
 .submit-box {
@@ -109,6 +109,7 @@ input:checked + label {
   border-radius: 20px;
   border: solid 5px white;
   line-height: 240px;
+  margin-right: 2vw;
 }
 #search_button {
   margin-top: 50px;

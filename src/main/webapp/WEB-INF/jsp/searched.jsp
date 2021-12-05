@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.io.*"
+<%@ page import="java.io.*" import="model.Item"
 %>
 
 <%File fs = new File("/Search"); 
   String pathS = fs.getName();
-  File fr = new File("/Register");
-  String pathR = fr.getName();
+  File ft = new File("/Top");
+  String pathT = ft.getName();
+%>
+
+<%HttpSession sess = request.getSession();
+  sess.getAttribute("searched_item");
+  String item_kind = (String)request.getAttribute("item_kind");
+  String found_place = (String)request.getAttribute("found_place");
+  String found_at = (String)request.getAttribute("found_at");
 %>
 
 <!DOCTYPE html>
@@ -26,19 +33,19 @@
     ,<p>A校</p><h1>でうけとってください！</h1>
     <div class="list-grid">
       <img src="img/sample1.jpg" alt="写真" class="list-grid-photo" width="auto" height="100%">
-      <h4>その他</h4>
-      <div class="list-where">郊外</div>
-      <div class="list-time">11/16</div>
+      <h4><%=item_kind %></h4>
+      <div class="list-where"><%=found_place %></div>
+      <div class="list-time"><%=found_at %></div>
     </div>
     <section class="check-box">
       <h2>種類</h2>
-      <p>その他</p>
+      <p><%=item_kind %></p>
       <h2>場所</h2>
-      <p>郊外</p>
+      <p><%=found_place %></p>
       <h2>拾った日</h2>
-      <p>11/16</p>
+      <p><%=found_at %></p>
     </section>
-    <button id="back_button" class="btn" type="button" onclick="">さいしょにもどる</button>
+    <button id="back_button" class="btn" type="button" onclick="location.href='./<%=pathT %>'">さいしょにもどる</button>
   </div>
 
   <footer>2021 (c)IgatatApps All Rights Resereved.</footer>

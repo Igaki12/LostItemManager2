@@ -23,9 +23,9 @@
   <div class="full">
     <div class="main">
       <p>おとしものを      </p>
-      <button id="lost_button" class="btn" type="button" onclick="Location.href='/Search'"> さがす</button>
+      <button id="lost_button" class="btn" type="button" onclick="location.href='./<%=pathS %>'"> さがす</button>
       <br>
-      <button id="found_button" class="btn" type="button" onclick="Location.href='<%=pathR %>'">ひろった</button>
+      <button id="found_button" class="btn" type="button" onclick="location.href='./<%=pathR %>'">ひろった</button>
     </div>
   </div>
   <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
