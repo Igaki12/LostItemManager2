@@ -4,6 +4,37 @@
   <artifactId>LostItemManager</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <!-- ここでJavaのバージョンを設定する -->
+                    <source>17.0.1</source>
+                    <target>17.0.1</target>
+                </configuration>
+            </plugin>
+            <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-shade-plugin</artifactId>
+    <version>2.3</version>
+    <configuration>
+      <createDependencyReducedPom>false</createDependencyReducedPom>
+    </configuration>
+    <executions>
+      <execution>
+        <phase>package</phase>
+        <goals>
+          <goal>shade</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+        </plugins>
+    </build>
+
 
 
 <dependencies>
@@ -21,13 +52,14 @@
     <version>8.0.27</version>
     </dependency>
     <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-s3</artifactId>
-            <version>1.11.112</version>
-    </dependency>
+  <groupId>com.amazonaws</groupId>
+  <artifactId>aws-java-sdk-s3</artifactId>
+  <version>1.11.828</version>
+</dependency>
   </dependencies>
   
-
+  
+  
   
 
 </project>

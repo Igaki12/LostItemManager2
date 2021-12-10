@@ -19,11 +19,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/style_registerCheck.css">
 <title>落とし物を登録</title>
 </head>
 <body>
-  <header>
+<div class="background">
+  <div class="main-screen">
+      <header>
     <h3>しらせる</h3>
   </header>
 
@@ -51,5 +54,9 @@
   
 
   <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
+  </div>
+</div>
+
+
 </body>
 </html>

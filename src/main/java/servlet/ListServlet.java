@@ -90,7 +90,7 @@ public class ListServlet extends HttpServlet{
     		break;
     	}
 		request.setAttribute("found_place", str_found_place);
-		String found_at = item.getFound_at().split(" ")[0] + "から";
+		String found_at = item.getFound_at().split(" ")[0] + "~";
 		request.setAttribute("found_at", found_at);
 		
 		List<Item> list = (List<Item>)model.DAO.SearchItemListWhereItem_kindFound_placeFound_atOrderByPosted_at(item.getItem_kind(), item.getFound_place(),item.getFound_at());
@@ -105,7 +105,7 @@ public class ListServlet extends HttpServlet{
 //			}
 //		}
 //		request.setAttribute("pageTop_index", pageTop_index);
-//		
+		
 		File f = new File("WEB-INF/jsp/list.jsp");
 		RequestDispatcher dispatcher = request.getRequestDispatcher(f.getPath());
 		dispatcher.forward(request, response);

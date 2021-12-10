@@ -20,15 +20,18 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/style_register.css">
 <title>落とし物を登録</title>
 </head>
 <body>
-  <header>
-    <h3>しらせる</h3>
-  </header>
-
-  <form method="post" action="./<%=pathR %>" name="register_form">
+  <div class="background">
+    <div class="main-screen">
+    
+        <header>
+          <h3>しらせる</h3>
+        </header>
+      <form method="post" action="./<%=pathR %>" name="register_form" enctype="multipart/form-data">
     <div class="search-box">
       <div class="search-box-title">ひろったものは？</div>
       <div class="search-box-grid">
@@ -63,16 +66,17 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
         <input id="time2" class="radio" type="radio" value="<%=daysAgo1 %>" name="found_at"><label for="time2">きのう</label>
         <input id="time3" class="radio" type="radio" value="<%=daysAgo2 %>" name="found_at"><label for="time3">おととい</label>
         <input id="time4" class="radio" type="radio" value="<%=daysAgo3 %>" name="found_at"><label for="time4">３日前ぐらい</label>
-        <input id="time5" class="radio" type="radio" value="<%=daysAgo7 %>" name="found_at"><label for="time5">1週間前ぐらい</label>
-        <input id="time6" class="radio" type="radio" value="<%=daysAgo14 %>" name="found_at"><label for="time6">2週間前ぐらい</label>
+        <input id="time5" class="radio" type="radio" value="<%=daysAgo7 %>" name="found_at"><label for="time5">7日前ぐらい</label>
+        <input id="time6" class="radio" type="radio" value="<%=daysAgo14 %>" name="found_at"><label for="time6">14日前ぐらい</label>
         
       </div>
     </div>
     <div class="search-box">
       <div class="search-box-title">しゃしんをとる</div>
       <div class="search-box-grid">
+      <input id="photo" type="file" name="photo" accept=".png, .jpg, .jpeg">
         <label for="photo" id="photo-label">写真をえらぶ</label>
-        <input id="photo" capture="environment" type="file" name="photo">
+        
       </div>
     </div>
     <div class="submit-box">
@@ -82,5 +86,9 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
   
 
   <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
+    </div>
+  </div>
+  
+  
 </body>
 </html>

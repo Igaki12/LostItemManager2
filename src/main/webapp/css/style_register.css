@@ -3,6 +3,44 @@
   padding: 0;
   box-sizing: border-box;
 }
+@media screen and (min-width : 481px){
+	.background{
+	  margin: 0;
+	  padding : 5vh 0;
+	  width: 100vw;
+	  height: auto;
+	  min-height: 100vh;
+	  background-color: rgb(223, 248, 213);
+	}
+	.main-screen{
+	  margin: 0 auto;
+	  width: 480px;
+	  border-radius: 20px;
+	  background-color: white;
+	}
+
+	header{
+	  border-top-left-radius: 20px;
+	  border-top-right-radius: 20px;
+	  height: 15vh;
+	  max-height: 200px;
+	  max-width: 480px;
+	}
+	footer{
+	  border-bottom-left-radius: 20px;
+	  border-bottom-right-radius: 20px;
+	  max-width: 480px;
+	}
+	
+	
+}
+@media screen and (max-width : 480px){
+	header{
+	  height: 20vh;
+	}
+	
+}
+
 header {
   letter-spacing: 7px;
   width: 100vw;
@@ -10,22 +48,23 @@ header {
   background-color: rgb(182, 3, 3);
   color: white;
   display: flex;
-  padding-left: 10vw;
-  font-size: 40px;
+  padding-left: 40px;
+  font-size: 25px;
   line-height: 8vh;
 }
 .search-box {
   margin-bottom: 0;
   width: 100vw;
+  max-width: 480px;
   height: auto;
   background-color: rgb(239, 255, 239);
-  border-left: solid 10px rgb(1, 83, 1);
-  border-right: solid 10px rgb(1, 83, 1);
-  border-bottom: solid 10px rgb(1, 83, 1);
-  border-bottom-left-radius: 10vw;
-  border-bottom-right-radius: 10vw;
+  border-left: solid 5px rgb(1, 83, 1);
+  border-right: solid 5px rgb(1, 83, 1);
+  border-bottom: solid 5px rgb(1, 83, 1);
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
   padding: 0 0 5vh 0;
-  font-size: 50px;
+  font-size: 25px;
   box-shadow: 0px 10px 10px gray;
 }
 
@@ -33,7 +72,7 @@ header {
   width: 100%;
   color: white;
   background-color: rgb(1, 83, 1);
-  padding: 1vh 10vw;
+  padding: 5px 30px;
   font-weight: bold;
   border: none;
 }
@@ -45,9 +84,9 @@ header {
 }
 #photo-label {
   margin: 2vh 2vw;
-  min-height: 120px;
-  line-height: 120px;
-  font-size: 50px;
+  min-height: 90px;
+  padding: 30px 10%;
+  font-size: 20px;
   color: white;
   background-color: rgb(1, 83, 1);
   box-shadow: 0px 10px 10px gray;
@@ -59,7 +98,8 @@ header {
 .search-box-grid > label {
   color: gray;
   border-radius: 50vh;
-  margin: 0 2vw;
+  margin: 8px 2vw;
+  font-size: 25px;
 }
 input:checked + label {
   color: black;
@@ -74,23 +114,26 @@ input:checked + label {
 }
 .submit-box {
   width: 100vw;
+  max-width: 480px;
   text-align: center;
   display: flex;
 }
 .condition {
   letter-spacing: 7px;
   width: 100vw;
+  max-width: 480px;
   min-height: 6vh;
   background-color: rgb(255, 238, 236);
   color: rgb(1, 49, 1);
   display: flex;
   padding-left: 10vw;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 6vh;
-  border-bottom: solid 10px rgb(1, 83, 1);
+  border-bottom: solid 5px rgb(1, 83, 1);
 }
 .list-grid {
   width: 96vw;
+  max-width: 461px;
   display: grid;
   border-radius: 50vh;
   margin: 10px 2vw;
@@ -98,12 +141,12 @@ input:checked + label {
   grid-template-columns: 40% 60%;
   grid-template-rows: 100px 70px 70px;
   color: white;
-  font-size: 40px;
+  font-size: 20px;
   background-color: rgb(182, 3, 3);
 }
 .list-grid > h4 {
   width: 100%;
-  font-size: 50px;
+  font-size: 30px;
   border: solid 5px white;
   border-radius: 50vh;
   text-align: center;
@@ -131,12 +174,11 @@ input:checked + label {
   box-shadow: none;
 }
 .btn {
-  text-align: center;
   color: white;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
   border-radius: 100vh;
-  padding: 50px 140px;
+  padding: 50px 90px;
   margin: 120px auto;
   border: none;
   box-shadow: 5px 5px 10px gray;
@@ -148,4 +190,5 @@ footer {
   text-align: center;
   color: white;
   background-color: rgb(1, 83, 1);
+  font-size: 10px;
 }

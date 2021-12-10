@@ -21,10 +21,14 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/style_search.css">
 <title>条件をつけて検索</title>
 </head>
 <body>
+
+<div class="background">
+    <div class="main-screen">
   <header>
     <h3>さがす</h3>
   </header>
@@ -65,9 +69,9 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
         <input id="time1" class="radio" type="radio" value="<%=today %>" name="found_at"><label for="time1">きょう</label>
         <input id="time2" class="radio" type="radio" value="<%=daysAgo1 %>" name="found_at"><label for="time2">きのう</label>
         <input id="time3" class="radio" type="radio" value="<%=daysAgo2 %>" name="found_at"><label for="time3">おととい</label>
-        <input id="time4" class="radio" type="radio" value="<%=daysAgo3 %>" name="found_at"><label for="time4">３日前ぐらい</label>
-        <input id="time5" class="radio" type="radio" value="<%=daysAgo7 %>" name="found_at"><label for="time5">１週間前ぐらい</label>
-        <input id="time6" class="radio" type="radio" value="<%=daysAgo14 %>" name="found_at"><label for="time6">２週間より前</label>
+        <input id="time4" class="radio" type="radio" value="<%=daysAgo3 %>" name="found_at"><label for="time4">3日前ぐらい</label>
+        <input id="time5" class="radio" type="radio" value="<%=daysAgo7 %>" name="found_at"><label for="time5">7日前ぐらい</label>
+        <input id="time6" class="radio" type="radio" value="<%=daysAgo14 %>" name="found_at"><label for="time6">14日前ぐらい</label>
       </div>
     </div>
     <div class="submit-box">
@@ -76,5 +80,7 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
   </form>
 
   <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
+  </div>
+  </div>
 </body>
 </html>

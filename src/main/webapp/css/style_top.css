@@ -1,35 +1,88 @@
 * {
-  letter-spacing: 7px;
+  letter-spacing: 5px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+@media screen and (min-width : 481px){
+	.background{
+	  margin: 0;
+	  padding : 5vh 0;
+	  width: 100vw;
+	  height: auto;
+	  min-height: 100vh;
+	  background-color: rgb(223, 248, 213);
+	}
+	.main-screen{
+	  margin: 0 auto;
+	  width: 480px;
+	  border-radius: 20px;
+	  background-color: white;
+	}
+	.main{
+	  padding-bottom: 10%;
+	}
+	.full {
+	  min-height: 60vh;
+	}
+	.title{
+	  border-top-left-radius: 20px;
+	  border-top-right-radius: 20px;
+	  height: 15vh;
+	  max-height: 200px;
+	}
+	h1{
+	  padding-top: 6vh;
+	}
+	footer{
+	  border-bottom-left-radius: 20px;
+	  border-bottom-right-radius: 20px;
+	}
+	
+	
+}
+@media screen and (max-width : 480px){
+	.full{
+	  min-height: 78vh;
+	}
+	.title{
+	  height: 20vh;
+	}
+	h1{
+	  padding-top: 8vh;
+	}
+}
+
+
 .title {
   width: 100vw;
-  height: 20vh;
+  max-width: 480px;
   padding: 0;
   background-color: rgb(1, 83, 1);
 }
 .full {
   width: 100vw;
+  max-width: 480px;
   height: auto;
-  min-height: 78vh;
   background: linear-gradient(white, rgb(137, 194, 137));
 }
 h1 {
+	font-size: 30px;
   color: white;
-  font-size: 80px;
   margin-top: 0;
-  padding-top: 8vh;
   text-align: center;
 }
 .main {
-  margin: 0% auto 10% auto;
+  margin: 0% auto 0 auto;
   padding-top: 10%;
-  max-width: 700px;
   height: 70%;
   text-align: center;
 }
 .main > p {
+  margin-left: 30px;
   font-weight: bolder;
-  font-size: 70px;
+  font-size: 30px;
   text-align: left;
 }
 #lost_button {
@@ -51,19 +104,22 @@ h1 {
   box-shadow: none;
 }
 .btn {
+	width: 300px;
   color: white;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
   border-radius: 100vh;
-  padding: 50px 140px;
-  margin: 120px auto;
+  padding: 30px 50px;
+  margin: 50px auto;
   border: none;
   box-shadow: 5px 5px 10px gray;
 }
 
 footer {
+  font-size: 10px;
   letter-spacing: 2px;
   width: 100vw;
+  max-width: 480px;
   height: 2vh;
   text-align: center;
   color: white;

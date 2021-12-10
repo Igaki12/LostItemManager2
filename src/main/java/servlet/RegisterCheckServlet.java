@@ -106,10 +106,13 @@ public class RegisterCheckServlet extends HttpServlet{
         	request.setAttribute("found_at", found_at);
         	
 //        	写真についての箇所
+        	String photo = item.getPhoto();
+        	File photoFile = model.S3AO.GetPhotoObject(photo);
+        	request.setAttribute("photoFile" ,photoFile);
         	
         	String posted_at = item.getPosted_at().split(" ")[0];
         	if(posted_at == null) {
-        		System.out.println("エラー：再入力してください");
+        		System.out.println("エラー：写真を再入力してください");
         		file = new File("./Register");
         	}
         	request.setAttribute("posted_at", posted_at);

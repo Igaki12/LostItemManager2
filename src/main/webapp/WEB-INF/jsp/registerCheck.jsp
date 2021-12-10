@@ -12,6 +12,7 @@
   String found_place = (String)request.getAttribute("str_found_place");
   String found_at = (String)request.getAttribute("found_at");
   String posted_at = (String)request.getAttribute("posted_at");
+  File photo = (File)request.getAttribute("photoFile");
 %>
 
 
@@ -19,18 +20,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/style_registerCheck.css">
 <title>落とし物を登録</title>
 </head>
 <body>
-  <header>
+
+<div class="background">
+  <div class="main-screen">
+      <header>
     <h3>しらせる</h3>
   </header>
 
   <div class="full-page">
     <h1>これでいいですか？</h1>
     <div class="list-grid">
-      <img src="img/sample1.jpg" alt="写真なし" class="list-grid-photo" width="auto" height="100%">
+      <img src="c:/temp/sample.png" alt="写真なし" class="list-grid-photo" width="auto" height="100%">
       <h4><%=item_kind %></h4>
       <div class="list-where"><%=found_place %></div>
       <div class="list-time"><%=found_at %></div>
@@ -52,5 +57,9 @@
   
 
   <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
+  </div>
+</div>
+
+
 </body>
 </html>

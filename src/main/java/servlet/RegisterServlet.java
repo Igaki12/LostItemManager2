@@ -2,15 +2,31 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import model.Item;
+
+
+@WebServlet("/Main")
+@MultipartConfig
 
 public class RegisterServlet extends HttpServlet{
 	
@@ -45,7 +61,22 @@ public class RegisterServlet extends HttpServlet{
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		//name属性がpictのファイルをPartオブジェクトとして取得
+		Part part=request.getPart("photo");
+		//ファイル名を取得
+		//String filename=part.getSubmittedFileName();//ie対応が不要な場合
+		String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString();
+		//アップロードするフォルダ
+		String path=getServletContext().getRealPath("WEB-INF/upload");
+		//実際にファイルが保存されるパス確認
+		System.out.println(path);
+		//書き込み
+		part.write(path+File.separator+filename);
 		Item item = new Item();
+		request.setAttribute("filename", filename);
+		item.setPhoto(filename);
+		
+		
 		String str_item_kind = request.getParameter("item_kind");
 		int item_kind = 0;
 		try{
@@ -55,7 +86,7 @@ public class RegisterServlet extends HttpServlet{
 		}
 		if(item_kind == 0) {
 			System.out.println("エラー：再入力してください");
-			response.sendRedirect("./Register");
+			response.sendRedirect("./Top");
 		}
 		item.setItem_kind(item_kind);
 		
@@ -67,8 +98,8 @@ public class RegisterServlet extends HttpServlet{
 			found_place = 0;
 		}
 		if(found_place == 0) {
-			System.out.println("エラー：再入力してください");
-			response.sendRedirect("./Register");
+			System.out.println("エラー：場所を再入力してください");
+			response.sendRedirect("./Top");
 		}
 		item.setFound_place(found_place);
 		
@@ -81,13 +112,19 @@ public class RegisterServlet extends HttpServlet{
 		item.setFound_at(found_at);
 		
 //		photoを登録する
+		if(request.getPart("photo") != null) {
+			File file = new File(path);
+			model.S3AO.PutPhotoObject("sample", file);
+			item.setPhoto("sample");
+		}
+		
 		
 		String posted_at = model.CalendarDate.StrDatetimeNow();
 		item.setPosted_at(posted_at);
 		
 		item.setDelete_flag(0);
 		
-		System.out.println(item);
+		System.out.println(item.getPhoto());
 		HttpSession session = request.getSession();
 		session.removeAttribute("registering_item");
 		session.setAttribute("registering_item", item);
