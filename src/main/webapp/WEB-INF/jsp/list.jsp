@@ -100,7 +100,7 @@
   %>
 
   <button class="list-grid" type="button"  onclick="location.href='./SearchCheck?id=<%=list.get(i).getId() %>'">
-    <img src="img/sample1.jpg" alt="写真" class="list-grid-photo" width="auto" height="100%">
+    <img src="img/sample1.jpg" alt="写真" class="list-grid-photo" width="auto" height="100%" id="<%=i %>">
     <h4><%=str_item_kind %></h4>
     <div class="list-where"><%=str_found_place %></div>
     <div class="list-time"><%=list.get(i).getFound_at().split(" ")[0] %></div>

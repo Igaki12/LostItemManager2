@@ -12,8 +12,7 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 
 
 public class S3AO {
-	private static final String S3_ACCESS_KEY           = "AKIAV6SFZ4FIUDM7N2HS";
-    private static final String S3_SECRET_KEY           = "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";
+	
     
 	public static void PutPhotoObject(String fileName, File file) {
 		AWSCredentials credentials = new BasicAWSCredentials(S3_ACCESS_KEY,S3_SECRET_KEY);

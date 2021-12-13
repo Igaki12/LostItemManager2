@@ -2,8 +2,11 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -67,7 +70,8 @@ public class RegisterServlet extends HttpServlet{
 		//String filename=part.getSubmittedFileName();//ie対応が不要な場合
 		String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString();
 		//アップロードするフォルダ
-		String path=getServletContext().getRealPath("WEB-INF/upload");
+//		String path=getServletContext().getRealPath("WEB-INF/upload");
+		String path = getServletContext().getResourceAsStream("WEB-INF/upload").toString();
 		//実際にファイルが保存されるパス確認
 		System.out.println(path);
 		//書き込み

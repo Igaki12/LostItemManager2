@@ -22,6 +22,7 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/style_register.css">
+<script type="text/javascript" src="js/register.js"></script>
 <title>落とし物を登録</title>
 </head>
 <body>
@@ -31,7 +32,7 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
         <header>
           <h3>しらせる</h3>
         </header>
-      <form method="post" action="./<%=pathR %>" name="register_form" enctype="multipart/form-data">
+      <form method="post" action="./<%=pathR %>" id="register_form" enctype="multipart/form-data">
     <div class="search-box">
       <div class="search-box-title">ひろったものは？</div>
       <div class="search-box-grid">
@@ -80,7 +81,7 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
       </div>
     </div>
     <div class="submit-box">
-      <button id="search_button" class="btn" type="submit" onclick="">けってい</button>
+      <button id="search_button" class="btn" type="submit" onclick="check()">けってい</button>
     </div>
   </form>
   
