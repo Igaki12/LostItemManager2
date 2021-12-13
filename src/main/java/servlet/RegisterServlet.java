@@ -71,7 +71,7 @@ public class RegisterServlet extends HttpServlet{
 		String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString();
 		//アップロードするフォルダ
 //		String path=getServletContext().getRealPath("WEB-INF/upload");
-		String path = getServletContext().getResourceAsStream("WEB-INF/upload").toString();
+		String path = getServletContext().getResourcePaths("/").toString() + "WEB-INF/upload";
 		//実際にファイルが保存されるパス確認
 		System.out.println(path);
 		//書き込み
