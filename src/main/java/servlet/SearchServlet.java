@@ -56,6 +56,8 @@ public class SearchServlet extends HttpServlet{
 			item_kind = 0;
 		}
 		item.setItem_kind(item_kind);
+		String word_item_kind = model.DAO.SelectStrItemKindByIntItemKind(item_kind);
+		item.setStr_item_kind(word_item_kind);
 		
 		String str_found_place = request.getParameter("found_place");
 		int found_place = 0;
@@ -65,6 +67,8 @@ public class SearchServlet extends HttpServlet{
 			found_place = 0;
 		}
 		item.setFound_place(found_place);
+		String word_found_place = model.DAO.SelectStrFoundPlaceByIntFoundPlace(found_place);
+		item.setStr_found_place(word_found_place);
 		
 		String day_found_at = request.getParameter("found_at");
 		if(day_found_at == null) {

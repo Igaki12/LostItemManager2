@@ -16,12 +16,66 @@ public class DAO {
 		try { 
 			Connection conn = null;
 //			mavenでは不要
-//			Class.forName("con.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection(path, user_id, pw);
 			conn.setAutoCommit(false);
 			return conn;
 		}catch(Exception e){
 			System.out.println("ConnectionError:" + e.getMessage());
+			return null;
+		}
+	}
+	
+	public static String SelectStrItemKindByIntItemKind(int item_kind) {
+		Connection conn = (Connection)Connect();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			sql = "SELECT str_item_kind FROM item_kind_tag WHERE item_kind=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, item_kind);
+			rs = ps.executeQuery();
+			System.out.println(ps);
+			rs.next();
+			String str = rs.getString("str_item_kind");
+			
+			rs.close();
+			ps.close();
+			conn.close();
+			return str;
+			
+			
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+	
+	public static String SelectStrFoundPlaceByIntFoundPlace(int found_place) {
+		Connection conn = (Connection)Connect();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			sql = "SELECT str_found_place FROM found_place_tag WHERE found_place=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, found_place);
+			rs = ps.executeQuery();
+			System.out.println(ps);
+			rs.next();
+			String str = rs.getString("str_found_place");
+			
+			rs.close();
+			ps.close();
+			conn.close();
+			return str;
+			
+			
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
 			return null;
 		}
 	}
@@ -70,7 +124,7 @@ public class DAO {
 		List<Item> list = new ArrayList<>();
 		try {
 			try {
-				sql = "SELECT * FROM item WHERE item_kind=? AND found_place=? AND delete_flag=0 AND found_at>? ORDER BY posted_at DESC";
+				sql = "SELECT id,str_item_kind,str_found_place,found_at,photo,pass,delete_flag,posted_at,updated_at,deleted_at FROM item INNER JOIN found_place_tag ON item.found_place=found_place_tag.found_place INNER JOIN item_kind_tag ON item.item_kind=item_kind_tag.item_kind WHERE item.item_kind=? AND item.found_place=? AND delete_flag=0 AND found_at>? ORDER BY posted_at DESC";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, item_kind);
 				ps.setInt(2, found_place);
@@ -81,8 +135,8 @@ public class DAO {
 				while(rs.next()) {
 					Item item = new Item();
 					item.setId(rs.getInt("id"));
-					item.setItem_kind(rs.getInt("item_kind"));
-					item.setFound_place(rs.getInt("found_place"));
+					item.setStr_item_kind(rs.getString("str_item_kind"));
+					item.setStr_found_place(rs.getString("str_found_place"));
 					item.setPhoto(rs.getString("photo"));
 					item.setPass(rs.getInt("pass"));
 					item.setDelete_flag(rs.getInt("delete_flag"));
@@ -117,7 +171,7 @@ public class DAO {
 		ResultSet rs = null;
 		try {
 			try {
-				sql = "SELECT * FROM item WHERE id=?";
+				sql = "SELECT id,str_item_kind,str_found_place,found_at,photo,pass,delete_flag,posted_at,updated_at,deleted_at FROM item INNER JOIN found_place_tag ON item.found_place=found_place_tag.found_place INNER JOIN item_kind_tag ON item.item_kind=item_kind_tag.item_kind WHERE id=?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, id);
 				System.out.println(ps);
@@ -126,8 +180,8 @@ public class DAO {
 				rs.next();
 				Item item = new Item();
 				item.setId(rs.getInt("id"));
-				item.setItem_kind(rs.getInt("item_kind"));
-				item.setFound_place(rs.getInt("found_place"));
+				item.setStr_item_kind(rs.getString("str_item_kind"));
+				item.setStr_found_place(rs.getString("str_found_place"));
 				item.setPhoto(rs.getString("photo"));
 				item.setFound_at(rs.getString("found_at"));
 				item.setDelete_flag(rs.getInt("delete_flag"));
@@ -184,6 +238,35 @@ public class DAO {
 			System.out.println(e.getMessage());
 			return 1;
 		}
+	}
+
+	public static int InsertIntoPlaceTagTable(String found_place) {
+		Connection conn = (Connection)Connect();
+		String sql = null;
+		PreparedStatement ps = null;
+		try {
+			try {
+				sql = "INSERT INTO found_place_tag(str_found_place) VALUES (?)";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, found_place);
+				System.out.println(ps);
+				int i = ps.executeUpdate();
+				
+				conn.commit();
+				System.out.println("Success_InsertPlaceTagTable:" + i);
+				conn.close();
+				ps.close();
+				return 0;
+				
+			}catch(SQLException e) {
+				conn.rollback();
+				System.out.println(e.getMessage());
+				return 1;
+			}
+	}catch(Exception e) {
+		System.out.println(e.getMessage());
+		return 1;
+	}
 	}
 	
 	

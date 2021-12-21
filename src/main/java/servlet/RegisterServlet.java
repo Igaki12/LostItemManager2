@@ -19,11 +19,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
 
 import model.Item;
 
@@ -63,23 +59,32 @@ public class RegisterServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 		
 		request.setCharacterEncoding("UTF-8");
+		Item item = new Item();
+		System.out.println("register:doPost");
 		
 		//name属性がpictのファイルをPartオブジェクトとして取得
-		Part part=request.getPart("photo");
+		Part part = request.getPart("photo");
+		System.out.println(request.getPart("photo"));
+		if(request.getPart("photo") != null) {
 		//ファイル名を取得
 		//String filename=part.getSubmittedFileName();//ie対応が不要な場合
 		String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString();
 		//アップロードするフォルダ
 //		String path=getServletContext().getRealPath("WEB-INF/upload");
-		String path = getServletContext().getResourcePaths("/").toString() + "WEB-INF/upload";
+		String path = getServletContext().getRealPath("/");
 		//実際にファイルが保存されるパス確認
-		System.out.println(path);
+		System.out.println("FileUploadFrom:" + path + File.separator + filename);
 		//書き込み
 		part.write(path+File.separator+filename);
-		Item item = new Item();
+		
 		request.setAttribute("filename", filename);
 		item.setPhoto(filename);
-		
+//		photoを登録する
+		File file = new File(path+File.separator+filename);
+		String unixtime10 = model.CalendarDate.StrUnixtimeNow();
+		model.S3AO.PutPhotoObject(unixtime10, file);
+		item.setPhoto(unixtime10);
+		}
 		
 		String str_item_kind = request.getParameter("item_kind");
 		int item_kind = 0;
@@ -93,6 +98,8 @@ public class RegisterServlet extends HttpServlet{
 			response.sendRedirect("./Top");
 		}
 		item.setItem_kind(item_kind);
+		String word_item_kind = model.DAO.SelectStrItemKindByIntItemKind(item_kind);
+		item.setStr_item_kind(word_item_kind);
 		
 		String str_found_place = request.getParameter("found_place");
 		int found_place = 0;
@@ -106,6 +113,9 @@ public class RegisterServlet extends HttpServlet{
 			response.sendRedirect("./Top");
 		}
 		item.setFound_place(found_place);
+		String word_found_place = model.DAO.SelectStrFoundPlaceByIntFoundPlace(found_place);
+		item.setStr_found_place(word_found_place);
+		
 		
 		String day_found_at = request.getParameter("found_at");
 		if(day_found_at == null) {
@@ -115,12 +125,7 @@ public class RegisterServlet extends HttpServlet{
 		String found_at = day_found_at +" " + time_found_at;
 		item.setFound_at(found_at);
 		
-//		photoを登録する
-		if(request.getPart("photo") != null) {
-			File file = new File(path);
-			model.S3AO.PutPhotoObject("sample", file);
-			item.setPhoto("sample");
-		}
+
 		
 		
 		String posted_at = model.CalendarDate.StrDatetimeNow();

@@ -22,7 +22,6 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/style_register.css">
-<script type="text/javascript" src="js/register.js"></script>
 <title>落とし物を登録</title>
 </head>
 <body>
@@ -90,6 +89,7 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
     </div>
   </div>
   
+  <script type="text/javascript" src="js/register.js"></script>
   
 </body>
 </html>

@@ -14,7 +14,25 @@ public class Item implements Serializable {
 	private String posted_at = "2001/01/01 00:00:00";
 	private String updated_at = null;
 	private String deleted_at = null;
+	private String str_item_kind = null;
+	private String str_found_place = null;
 	
+	public String getStr_item_kind() {
+		return str_item_kind;
+	}
+
+	public void setStr_item_kind(String str_item_kind) {
+		this.str_item_kind = str_item_kind;
+	}
+
+	public String getStr_found_place() {
+		return str_found_place;
+	}
+
+	public void setStr_found_place(String str_found_place) {
+		this.str_found_place = str_found_place;
+	}
+
 	public int getId() {
 		return id;
 	}

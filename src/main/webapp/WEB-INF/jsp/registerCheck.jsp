@@ -12,7 +12,8 @@
   String found_place = (String)request.getAttribute("str_found_place");
   String found_at = (String)request.getAttribute("found_at");
   String posted_at = (String)request.getAttribute("posted_at");
-  File photo = (File)request.getAttribute("photoFile");
+  String photo = (String)request.getAttribute("photo");
+  
 %>
 
 
@@ -35,7 +36,7 @@
   <div class="full-page">
     <h1>これでいいですか？</h1>
     <div class="list-grid">
-      <img src="c:/temp/sample.png" alt="写真なし" class="list-grid-photo" width="auto" height="100%">
+      <img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" alt="写真" class="list-grid-photo" width="90px" height="90px">
       <h4><%=item_kind %></h4>
       <div class="list-where"><%=found_place %></div>
       <div class="list-time"><%=found_at %></div>

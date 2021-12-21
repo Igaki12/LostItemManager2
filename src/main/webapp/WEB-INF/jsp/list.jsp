@@ -40,69 +40,12 @@
   %>
   
   <%for(int i = 0; i < list.size(); i++){ 
-      String str_item_kind = "";
-      switch(list.get(i).getItem_kind()) {
-	    case 1:  
-	    	str_item_kind = "ペン";
-	        break;
-	    case 2:  
-	    	str_item_kind = "ふでばこ";
-	        break;
-	    case 3:  
-	    	str_item_kind = "けしゴム";
-	    	break;
-	    case 4:  
-	    	str_item_kind = "したじき";
-	    	break;
-	    case 5:  
-	    	str_item_kind = "ノート";
-	    	break;
-	    case 6:  
-	    	str_item_kind = "プリント";
-	    	break;
-	    case 7:  
-	    	str_item_kind = "かさ";
-	    	break;
-	    case 8:  
-	    	str_item_kind = "そのほか";
-	    	break;
-       }
-       String str_found_place = "";
-       switch(list.get(i).getFound_place()) {
-   	case 1:
-   		str_found_place = "本校";
-   		break;
-   	case 2:
-   		str_found_place = "A校";
-   		break;
-   	case 3:
-   		str_found_place = "B校";
-   		break;
-   	case 4:
-   		str_found_place = "C校";
-   		break;
-   	case 5:
-   		str_found_place = "D校";
-   		break;
-   	case 6:
-   		str_found_place = "E校";
-   		break;
-   	case 7:
-   		str_found_place = "F校";
-   		break;
-   	case 8:
-   		str_found_place = "G校";
-   		break;
-   	case 9:
-   		str_found_place = "そのほか";
-   		break;
-   	}
   %>
 
   <button class="list-grid" type="button"  onclick="location.href='./SearchCheck?id=<%=list.get(i).getId() %>'">
-    <img src="img/sample1.jpg" alt="写真" class="list-grid-photo" width="auto" height="100%" id="<%=i %>">
-    <h4><%=str_item_kind %></h4>
-    <div class="list-where"><%=str_found_place %></div>
+    <img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=list.get(i).getPhoto() %>.png" alt="写真" class="list-grid-photo" width="90px" height="90px" id="<%=i %>">
+    <h4><%=list.get(i).getStr_item_kind() %></h4>
+    <div class="list-where"><%=list.get(i).getStr_found_place() %></div>
     <div class="list-time"><%=list.get(i).getFound_at().split(" ")[0] %></div>
   </button>
   

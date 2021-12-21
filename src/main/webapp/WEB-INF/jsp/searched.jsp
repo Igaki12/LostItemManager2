@@ -14,6 +14,7 @@
   String item_kind = (String)request.getAttribute("item_kind");
   String found_place = (String)request.getAttribute("found_place");
   String found_at = (String)request.getAttribute("found_at");
+  String photo = (String)request.getAttribute("photo");
 %>
 
 <!DOCTYPE html>
@@ -35,7 +36,7 @@
     <h1>おとしものがみつかりました。</h1>
       <p>A校</p><h1>でうけとってください！</h1>
     <div class="list-grid">
-      <img src="img/sample1.jpg" alt="写真" class="list-grid-photo" width="auto" height="100%">
+      <img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" alt="写真" class="list-grid-photo" width="90px" height="90px">
       <h4><%=item_kind %></h4>
       <div class="list-where"><%=found_place %></div>
       <div class="list-time"><%=found_at %></div>

@@ -49,7 +49,7 @@
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/el-api.jar"/>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/jasper.jar"/>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/jasper-el.jar"/>
-	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/jaspic-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/jaspic-api.jar"/>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/tomcat-api.jar"/>
@@ -67,5 +67,7 @@
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/tomcat-util-scan.jar"/>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/tomcat-websocket.jar"/>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/websocket-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/81802/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/81802/eclipse-workspace_EE/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LostItemManager/WEB-INF/lib/mysql-connector-java-8.0.27.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

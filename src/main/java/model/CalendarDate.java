@@ -50,4 +50,10 @@ public class CalendarDate {
 		}
 		
 	}
+	public static String StrUnixtimeNow() {
+		int int_unix = (int) (System.currentTimeMillis()/1000L);
+		String str_unix = String.format("%010d", int_unix);
+		System.out.println(str_unix);
+		return str_unix;
+	}
 }

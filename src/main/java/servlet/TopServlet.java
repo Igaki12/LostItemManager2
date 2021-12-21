@@ -16,6 +16,7 @@ public class TopServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
 		request.setCharacterEncoding("utf-8");
+		
 		File f = new File("WEB-INF/jsp/top.jsp");
 		String path = f.getPath();
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);

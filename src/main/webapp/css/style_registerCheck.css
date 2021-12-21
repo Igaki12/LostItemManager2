@@ -70,6 +70,7 @@ h1 {
 
 .list-grid {
   width: 96vw;
+  max-width: 461px;
   display: grid;
   border-radius: 50vh;
   margin: 10px 10px;
