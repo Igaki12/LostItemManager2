@@ -22,13 +22,12 @@ public class SearchServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 		
 		request.setCharacterEncoding("UTF-8");
-		String now = model.CalendarDate.StrDatetimeNow();
-		String today = now.split(" ")[0];
-		String daysAgo1 = model.CalendarDate.StrDatetimeDaysAgo(1).split(" ")[0];
-		String daysAgo2 = model.CalendarDate.StrDatetimeDaysAgo(2).split(" ")[0];
-		String daysAgo3 = model.CalendarDate.StrDatetimeDaysAgo(3).split(" ")[0];
-		String daysAgo7 = model.CalendarDate.StrDatetimeDaysAgo(7).split(" ")[0];
-		String daysAgo14 = model.CalendarDate.StrDatetimeDaysAgo(14).split(" ")[0];
+		String today = model.CalendarDate.StrDatetimeDaysAgo(1).split(" ")[0];
+		String daysAgo1 = model.CalendarDate.StrDatetimeDaysAgo(2).split(" ")[0];
+		String daysAgo2 = model.CalendarDate.StrDatetimeDaysAgo(3).split(" ")[0];
+		String daysAgo3 = model.CalendarDate.StrDatetimeDaysAgo(4).split(" ")[0];
+		String daysAgo7 = model.CalendarDate.StrDatetimeDaysAgo(14).split(" ")[0];
+		String daysAgo14 = model.CalendarDate.StrDatetimeDaysAgo(28).split(" ")[0];
 		
 		request.setAttribute("today", today);
 		request.setAttribute("daysAgo1", daysAgo1);
