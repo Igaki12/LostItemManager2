@@ -1,13 +1,13 @@
  function check(){
 	let alertMsg = "";
-	const form = document.getElementById(register_form);
+	const form = document.getElementById("register_form");
 	let item_kind = form.item_kind.value;
 	let found_place = form.found_place.value;
 	
 	if(item_kind == "" || item_kind.match(/^([1-8])$/) == null){
-		alertMsg += "種類をえらんでください";
+		alertMsg += "種類をえらんでください\n";
 	}if(found_place == "" || found_place.match(/^([1-9])$/) == null ){
-		alertMsg += "場所をえらんでください";
+		alertMsg += "場所をえらんでください\n";
 	}
 	if(alertMsg != ""){
 		alert(alertMsg);

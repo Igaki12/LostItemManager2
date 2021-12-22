@@ -65,7 +65,7 @@ public class RegisterServlet extends HttpServlet{
 		//name属性がpictのファイルをPartオブジェクトとして取得
 		Part part = request.getPart("photo");
 		System.out.println(request.getPart("photo"));
-		if(request.getPart("photo") != null) {
+		try {
 		//ファイル名を取得
 		//String filename=part.getSubmittedFileName();//ie対応が不要な場合
 		String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString();
@@ -84,6 +84,9 @@ public class RegisterServlet extends HttpServlet{
 		String unixtime10 = model.CalendarDate.StrUnixtimeNow();
 		model.S3AO.PutPhotoObject(unixtime10, file);
 		item.setPhoto(unixtime10);
+		file.delete();
+		}catch(Exception e) {
+			System.out.println("PhotoUploadFailure:" + e.getMessage());
 		}
 		
 		String str_item_kind = request.getParameter("item_kind");
