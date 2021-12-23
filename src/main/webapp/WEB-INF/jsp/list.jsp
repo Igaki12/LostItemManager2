@@ -43,16 +43,24 @@
   %>
 
   <button class="list-grid" type="button"  onclick="location.href='./SearchCheck?id=<%=list.get(i).getId() %>'">
-    <img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=list.get(i).getPhoto() %>.png" alt="写真" class="list-grid-photo" width="90px" height="90px" id="<%=i %>">
+  <img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=list.get(i).getPhoto() %>.png" alt="リンク切れ"  width="90px" height="90px" class="list-grid-photo">
     <h4><%=list.get(i).getStr_item_kind() %></h4>
     <div class="list-where"><%=list.get(i).getStr_found_place() %></div>
     <div class="list-time"><%=list.get(i).getFound_at().split(" ")[0] %></div>
   </button>
-  
   <%} %>
+  
+  <div class="widest">
+    <%if(list.size() == 0){ %>
+    <h3>見つかりませんでした</h3>
+    <%} %>
+    <button id="back_button" class="btn" type="button" onclick="location.href='./<%=pathS %>'">もどる</button>
+  </div>
+  
+  <footer>2021 (c)IgatatApps All Rights Reserved.</footer>
+  </div>
+  </div>
 
-  <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
-  </div>
-  </div>
+
 </body>
 </html>

@@ -96,9 +96,19 @@ h1 {
   line-height: 30px;
   text-align: left;
 }
+.list-where{
+	grid-column: 2/3;
+	grid-row: 2/3;
+}
+.list-time{
+	grid-column: 2/3;
+	grid-row: 3/4;
+}
 .list-grid-photo {
   grid-column: 1/2;
   grid-row: 1/4;
+  width: 90px;
+  height: 90px;
   text-align: center;
   border-radius: 10px;
   border: solid 3px white;

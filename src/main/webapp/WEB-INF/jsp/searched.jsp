@@ -23,6 +23,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/style_searchCheck.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
 <title>条件をつけて検索</title>
 </head>
 <body>
@@ -36,7 +37,7 @@
     <h1>おとしものがみつかりました。</h1>
       <p>A校</p><h1>でうけとってください！</h1>
     <div class="list-grid">
-      <img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" alt="写真" class="list-grid-photo" width="90px" height="90px">
+      <a href="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" data-lightbox="abc" data-title="拡大写真" ><img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" alt="リンク切れ"  width="90px" height="90px" class="list-grid-photo"></a>
       <h4><%=item_kind %></h4>
       <div class="list-where"><%=found_place %></div>
       <div class="list-time"><%=found_at %></div>
@@ -52,10 +53,12 @@
     <button id="back_button" class="btn" type="button" onclick="location.href='./<%=pathT %>'">さいしょにもどる</button>
   </div>
 
-  <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
+  <footer>2021 (c)IgatatApps All Rights Reserved.</footer>
   </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
 
 </body>
 </html>

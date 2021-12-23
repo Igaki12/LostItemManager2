@@ -19,6 +19,7 @@ Item item = (Item)sess.getAttribute("searched_item");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/style_searchCheck.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
 <title>確認画面</title>
 </head>
 <body>
@@ -31,7 +32,7 @@ Item item = (Item)sess.getAttribute("searched_item");
   <div class="full-page">
     <h1>これでいいですか？</h1>
     <div class="list-grid">
-      <img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=item.getPhoto() %>.png" alt="写真" class="list-grid-photo" width="90px" height="90px">
+      <a href="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=item.getPhoto() %>.png" data-lightbox="abc" data-title="拡大写真" ><img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=item.getPhoto() %>.png" alt="リンク切れ"  width="90px" height="90px" class="list-grid-photo"></a>
       <h4><%=item.getStr_item_kind() %></h4>
       <div class="list-where"><%=item.getStr_found_place() %></div>
       <div class="list-time"><%=item.getFound_at().split(" ")[0] %></div>
@@ -49,9 +50,11 @@ Item item = (Item)sess.getAttribute("searched_item");
     <button id="back_button" class="btn" type="button" onclick="location.href='./<%=pathL %>'">もどる</button>
   </div>
 
-  <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
+  <footer>2021 (c)IgatatApps All Rights Reserved.</footer>
   </div>
 </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
   
 </body>
 </html>
