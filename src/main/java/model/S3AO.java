@@ -12,8 +12,6 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 
 
 public class S3AO {
-	
-
     
 	public static void PutPhotoObject(String fileName, File file) {
 		AWSCredentials credentials = new BasicAWSCredentials(S3_ACCESS_KEY,S3_SECRET_KEY);
