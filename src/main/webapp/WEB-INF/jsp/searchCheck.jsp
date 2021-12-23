@@ -32,7 +32,7 @@ Item item = (Item)sess.getAttribute("searched_item");
   <div class="full-page">
     <h1>これでいいですか？</h1>
     <div class="list-grid">
-      <a href="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=item.getPhoto() %>.png" data-lightbox="abc" data-title="拡大写真" ><img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=item.getPhoto() %>.png" alt="リンク切れ"  width="90px" height="90px" class="list-grid-photo"></a>
+      <a href="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=item.getPhoto() %>.png" data-lightbox="abc" data-title="拡大写真" ><img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=item.getPhoto() %>.png" alt="なし"  width="90px" height="90px" class="list-grid-photo"></a>
       <h4><%=item.getStr_item_kind() %></h4>
       <div class="list-where"><%=item.getStr_found_place() %></div>
       <div class="list-time"><%=item.getFound_at().split(" ")[0] %></div>

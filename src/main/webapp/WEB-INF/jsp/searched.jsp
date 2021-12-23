@@ -37,7 +37,7 @@
     <h1>おとしものがみつかりました。</h1>
       <p>A校</p><h1>でうけとってください！</h1>
     <div class="list-grid">
-      <a href="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" data-lightbox="abc" data-title="拡大写真" ><img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" alt="リンク切れ"  width="90px" height="90px" class="list-grid-photo"></a>
+      <a href="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" data-lightbox="abc" data-title="拡大写真" ><img src="https://lostitemmanager.s3.ap-northeast-1.amazonaws.com/dir/<%=photo %>.png" alt="なし"  width="90px" height="90px" class="list-grid-photo"></a>
       <h4><%=item_kind %></h4>
       <div class="list-where"><%=found_place %></div>
       <div class="list-time"><%=found_at %></div>

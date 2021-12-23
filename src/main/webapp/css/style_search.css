@@ -87,6 +87,11 @@ header {
   border-radius: 50vh;
   margin: 8px 10px;
 }
+.search-box-grid > p {
+  color: gray;
+  border-radius: 50vh;
+  margin: 8px 10px;
+}
 
 .radio {
   display: none;
@@ -157,6 +162,7 @@ input:checked + label {
 	grid-row: 3/4;
 }
 .list-grid-photo {
+	  object-fit: cover;
   grid-column: 1/2;
   grid-row: 1/4;
   border-radius: 10px;

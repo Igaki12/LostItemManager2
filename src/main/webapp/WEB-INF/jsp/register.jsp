@@ -68,7 +68,7 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
         <input id="time4" class="radio" type="radio" value="<%=daysAgo3 %>" name="found_at"><label for="time4">３日前ぐらい</label>
         <input id="time5" class="radio" type="radio" value="<%=daysAgo7 %>" name="found_at"><label for="time5">7日前ぐらい</label>
         <input id="time6" class="radio" type="radio" value="<%=daysAgo14 %>" name="found_at"><label for="time6">14日前ぐらい</label>
-        
+                
       </div>
     </div>
     <div class="search-box">
@@ -80,7 +80,7 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
       </div>
     </div>
     <div class="submit-box">
-      <button id="search_button" class="btn" type="submit" onclick="check()">けってい</button>
+      <button id="search_button" class="btn" type="submit" onclick="return check();">けってい</button>
     </div>
   </form>
   
