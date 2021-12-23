@@ -16,7 +16,7 @@ public class DAO {
 		try { 
 			Connection conn = null;
 //			mavenでは不要
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection(path, user_id, pw);
 			conn.setAutoCommit(false);
 			return conn;

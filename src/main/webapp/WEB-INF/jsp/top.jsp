@@ -31,7 +31,7 @@
       <button id="found_button" class="btn" type="button" onclick="location.href='./<%=pathR %>'">ひろった</button>
     </div>
   </div>
-  <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
+  <footer>2021 (c)IgatatApps All Rights Reserved.</footer>
 </div>
 </div>
   

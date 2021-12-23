@@ -85,7 +85,7 @@ String daysAgo14 = (String)request.getAttribute("daysAgo14");
   </form>
   
 
-  <footer>2021 (c)IgatatApps All Rights Resereved.</footer>
+  <footer>2021 (c)IgatatApps All Rights Reserved.</footer>
     </div>
   </div>
   
