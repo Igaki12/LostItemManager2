@@ -12,10 +12,16 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 
 
 public class S3AO {
-
+	
+	private static String S3_ACCESS_KEY(){
+		return System.getenv("S3_ACCESS_KEY");
+	}
+	private static String S3_SECRET_KEY(){
+		return System.getenv("S3_SECRET_KEY");
+	}
     
 	public static void PutPhotoObject(String fileName, File file) {
-		AWSCredentials credentials = new BasicAWSCredentials(S3_ACCESS_KEY,S3_SECRET_KEY);
+		AWSCredentials credentials = new BasicAWSCredentials(S3_ACCESS_KEY(),S3_SECRET_KEY());
 	    // S3クライアントの生成
 	    AmazonS3 s3Client = AmazonS3ClientBuilder
 	            .standard()
@@ -33,7 +39,7 @@ public class S3AO {
 	    );
 	}
 	public static File GetPhotoObject(String fromS3Path , String toWebappPath) {
-	    AWSCredentials credentials = new BasicAWSCredentials(S3_ACCESS_KEY,S3_SECRET_KEY);
+	    AWSCredentials credentials = new BasicAWSCredentials(S3_ACCESS_KEY(),S3_SECRET_KEY());
 	    // S3クライアントの生成
 	    AmazonS3 s3Client = AmazonS3ClientBuilder
 	            .standard()
