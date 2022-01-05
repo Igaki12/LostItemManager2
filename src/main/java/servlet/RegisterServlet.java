@@ -82,7 +82,12 @@ public class RegisterServlet extends HttpServlet{
 //		photoを登録する
 		File file = new File(path+File.separator+filename);
 		String unixtime10 = model.CalendarDate.StrUnixtimeNow();
-		model.S3AO.PutPhotoObject(unixtime10, file);
+		try{
+			model.S3AO.PutPhotoObject(unixtime10, file);
+		}catch(Exception f) {
+			System.out.println(f.getMessage());
+			System.out.println("Failed to upload Photographs.");
+		}
 		item.setPhoto(unixtime10);
 		file.delete();
 		}catch(Exception e) {
