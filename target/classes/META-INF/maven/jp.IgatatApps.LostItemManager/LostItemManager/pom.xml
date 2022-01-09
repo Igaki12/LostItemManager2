@@ -73,11 +73,6 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>com.zaxxer</groupId>
-      <artifactId>HikariCP</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
           <scope>runtime</scope>
@@ -103,11 +98,6 @@
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-util</artifactId>
       <version>8.0.30</version>
-    </dependency>
-    <dependency>
-      <groupId>com.amazonaws</groupId>
-      <artifactId>aws-java-sdk</artifactId>
-      <version>1.11.125</version>
     </dependency>
   </dependencies>
   <build>
@@ -167,4 +157,19 @@
             </plugin>
         </plugins>
     </build>
+     <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <name>Spring Releases</name>
+            <url>http://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <name>Spring Releases</name>
+            <url>http://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
