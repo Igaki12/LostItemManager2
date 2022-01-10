@@ -3,6 +3,7 @@
   <groupId>jp.IgatatApps.LostItemManager</groupId>
   <artifactId>LostItemManager</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+      <packaging>war</packaging>
   
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -19,6 +20,7 @@
     <webjars-jquery.version>3.3.1-1</webjars-jquery.version>
 	<maven.compiler.source>1.8</maven.compiler.source>
 	<maven.compiler.target>1.8</maven.compiler.target>
+        <start-class>LostItemManagerApplication.java</start-class>
   </properties>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
@@ -31,6 +33,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -100,6 +107,7 @@
       <version>8.0.30</version>
     </dependency>
   </dependencies>
+  
   <build>
         <plugins>
         <plugin>
