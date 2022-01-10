@@ -1,4 +1,4 @@
-package servlet;
+package jp.IgatatApps.LostItemManager.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Item;
+import jp.IgatatApps.LostItemManager.model.*;
 
 public class SearchedServlet extends HttpServlet{
 	

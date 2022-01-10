@@ -1,4 +1,4 @@
-package servlet;
+package jp.IgatatApps.LostItemManager.servlet;
 
 import java.io.File;
 import java.io.IOException;

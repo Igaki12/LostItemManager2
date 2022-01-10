@@ -1,4 +1,4 @@
-package model;
+package jp.IgatatApps.LostItemManager.model;
 
 import java.io.Serializable;
 

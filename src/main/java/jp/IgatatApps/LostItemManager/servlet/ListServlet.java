@@ -1,8 +1,7 @@
-package servlet;
+package jp.IgatatApps.LostItemManager.servlet;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Item;
+import jp.IgatatApps.LostItemManager.model.*;
 
 public class ListServlet extends HttpServlet{
 	
@@ -33,7 +32,7 @@ public class ListServlet extends HttpServlet{
 		String found_at = item.getFound_at().split(" ")[0] + "~";
 		request.setAttribute("found_at", found_at);
 		
-		List<Item> list = (List<Item>)model.DAO.SearchItemListWhereItem_kindFound_placeFound_atOrderByPosted_at(item.getItem_kind(), item.getFound_place(),item.getFound_at());
+		List<Item> list = (List<Item>)jp.IgatatApps.LostItemManager.model.DAO.SearchItemListWhereItem_kindFound_placeFound_atOrderByPosted_at(item.getItem_kind(), item.getFound_place(),item.getFound_at());
 		request.setAttribute("list", list);
 		
 //		int pageTop_index = 0;

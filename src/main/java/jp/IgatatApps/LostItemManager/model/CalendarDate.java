@@ -1,4 +1,4 @@
-package model;
+package jp.IgatatApps.LostItemManager.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,21 +28,21 @@ public class CalendarDate {
 	}
 	public static String StrDatetimeNow() {
 		Calendar cl = Calendar.getInstance();
-		Date date = model.CalendarDate.ParseCalendarToDate(cl);
-		String str = model.CalendarDate.ParseDateToString(date);
+		Date date = jp.IgatatApps.LostItemManager.model.CalendarDate.ParseCalendarToDate(cl);
+		String str = jp.IgatatApps.LostItemManager.model.CalendarDate.ParseDateToString(date);
 		return str;
 	}
 	public static String StrDatetimeDaysAgo(int day) {
 		Calendar cl = Calendar.getInstance();
 		cl.add(Calendar.DAY_OF_MONTH, -1*day);
-		Date date = model.CalendarDate.ParseCalendarToDate(cl);
-		String str = model.CalendarDate.ParseDateToString(date);
+		Date date = jp.IgatatApps.LostItemManager.model.CalendarDate.ParseCalendarToDate(cl);
+		String str = jp.IgatatApps.LostItemManager.model.CalendarDate.ParseDateToString(date);
 		return str;
 	}
 	public static Calendar ParseStrToCalendar(String str) {
 		try{
-			Date date = model.CalendarDate.ParseStrToDate(str);
-			Calendar cl = model.CalendarDate.ParseDateToCalendar(date);
+			Date date = jp.IgatatApps.LostItemManager.model.CalendarDate.ParseStrToDate(str);
+			Calendar cl = jp.IgatatApps.LostItemManager.model.CalendarDate.ParseDateToCalendar(date);
 			return cl;
 		}catch(Exception e ) {
 			System.out.println(e.getMessage());

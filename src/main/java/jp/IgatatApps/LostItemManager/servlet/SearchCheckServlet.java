@@ -1,4 +1,4 @@
-package servlet;
+package jp.IgatatApps.LostItemManager.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Item;
+import jp.IgatatApps.LostItemManager.model.*;
 
 public class SearchCheckServlet extends HttpServlet{
 	
@@ -31,7 +31,7 @@ public class SearchCheckServlet extends HttpServlet{
 			response.sendRedirect("./List");
 		}
 //		idをもとにDBから該当アイテムを検索して、あればrequestで送ってフォワード
-		Item item = model.DAO.SelectItemById(id);
+		Item item = jp.IgatatApps.LostItemManager.model.DAO.SelectItemById(id);
 		HttpSession session = request.getSession();
 		session.removeAttribute("searched_item");
 		session.setAttribute("searched_item", item);
@@ -46,8 +46,8 @@ public class SearchCheckServlet extends HttpServlet{
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		Item item = (Item)session.getAttribute("searched_item");
-		String now = model.CalendarDate.StrDatetimeNow();
-		int flag = model.DAO.UpdateDelete_flagDeleted_atOfItemById(1, now, item.getId());
+		String now = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeNow();
+		int flag = jp.IgatatApps.LostItemManager.model.DAO.UpdateDelete_flagDeleted_atOfItemById(1, now, item.getId());
 		if(flag != 0) {
 			System.out.println("エラー：再入力してください");
 			response.sendRedirect("./SearchCheck");

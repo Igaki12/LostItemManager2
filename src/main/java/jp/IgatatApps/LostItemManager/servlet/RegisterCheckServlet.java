@@ -1,4 +1,4 @@
-package servlet;
+package jp.IgatatApps.LostItemManager.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Item;
+import jp.IgatatApps.LostItemManager.model.*;
 
 public class RegisterCheckServlet extends HttpServlet{
 
@@ -63,7 +63,7 @@ public class RegisterCheckServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		Item item = (Item)session.getAttribute("registering_item");
 		
-		int flag = model.DAO.InsertItem(item);
+		int flag = jp.IgatatApps.LostItemManager.model.DAO.InsertItem(item);
 		
 		response.sendRedirect("./Registered");
 	}

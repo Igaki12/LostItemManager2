@@ -1,4 +1,4 @@
-package servlet;
+package jp.IgatatApps.LostItemManager.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Item;
+import jp.IgatatApps.LostItemManager.model.*;
 
 public class SearchServlet extends HttpServlet{
 	
@@ -22,12 +22,12 @@ public class SearchServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 		
 		request.setCharacterEncoding("UTF-8");
-		String today = model.CalendarDate.StrDatetimeDaysAgo(1).split(" ")[0];
-		String daysAgo1 = model.CalendarDate.StrDatetimeDaysAgo(2).split(" ")[0];
-		String daysAgo2 = model.CalendarDate.StrDatetimeDaysAgo(3).split(" ")[0];
-		String daysAgo3 = model.CalendarDate.StrDatetimeDaysAgo(4).split(" ")[0];
-		String daysAgo7 = model.CalendarDate.StrDatetimeDaysAgo(14).split(" ")[0];
-		String daysAgo14 = model.CalendarDate.StrDatetimeDaysAgo(28).split(" ")[0];
+		String today = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(1).split(" ")[0];
+		String daysAgo1 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(2).split(" ")[0];
+		String daysAgo2 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(3).split(" ")[0];
+		String daysAgo3 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(4).split(" ")[0];
+		String daysAgo7 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(14).split(" ")[0];
+		String daysAgo14 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(28).split(" ")[0];
 		
 		request.setAttribute("today", today);
 		request.setAttribute("daysAgo1", daysAgo1);
@@ -55,7 +55,7 @@ public class SearchServlet extends HttpServlet{
 			item_kind = 0;
 		}
 		item.setItem_kind(item_kind);
-		String word_item_kind = model.DAO.SelectStrItemKindByIntItemKind(item_kind);
+		String word_item_kind = jp.IgatatApps.LostItemManager.model.DAO.SelectStrItemKindByIntItemKind(item_kind);
 		item.setStr_item_kind(word_item_kind);
 		
 		String str_found_place = request.getParameter("found_place");
@@ -66,14 +66,14 @@ public class SearchServlet extends HttpServlet{
 			found_place = 0;
 		}
 		item.setFound_place(found_place);
-		String word_found_place = model.DAO.SelectStrFoundPlaceByIntFoundPlace(found_place);
+		String word_found_place = jp.IgatatApps.LostItemManager.model.DAO.SelectStrFoundPlaceByIntFoundPlace(found_place);
 		item.setStr_found_place(word_found_place);
 		
 		String day_found_at = request.getParameter("found_at");
 		if(day_found_at == null) {
-			day_found_at = model.CalendarDate.StrDatetimeDaysAgo(365);
+			day_found_at = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(365);
 		}
-		String time_found_at = model.CalendarDate.StrDatetimeNow().split(" ")[1];
+		String time_found_at = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeNow().split(" ")[1];
 		String found_at = day_found_at +" " + time_found_at;
 		item.setFound_at(found_at);
 		

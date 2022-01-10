@@ -1,4 +1,4 @@
-package servlet;
+package jp.IgatatApps.LostItemManager.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 
 
 
-import model.Item;
+import jp.IgatatApps.LostItemManager.model.*;
 
 
 @WebServlet("/Main")
@@ -37,13 +37,13 @@ public class RegisterServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 		
 		request.setCharacterEncoding("UTF-8");
-		String now = model.CalendarDate.StrDatetimeNow();
+		String now = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeNow();
 		String today = now.split(" ")[0];
-		String daysAgo1 = model.CalendarDate.StrDatetimeDaysAgo(1).split(" ")[0];
-		String daysAgo2 = model.CalendarDate.StrDatetimeDaysAgo(2).split(" ")[0];
-		String daysAgo3 = model.CalendarDate.StrDatetimeDaysAgo(3).split(" ")[0];
-		String daysAgo7 = model.CalendarDate.StrDatetimeDaysAgo(7).split(" ")[0];
-		String daysAgo14 = model.CalendarDate.StrDatetimeDaysAgo(14).split(" ")[0];
+		String daysAgo1 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(1).split(" ")[0];
+		String daysAgo2 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(2).split(" ")[0];
+		String daysAgo3 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(3).split(" ")[0];
+		String daysAgo7 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(7).split(" ")[0];
+		String daysAgo14 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeDaysAgo(14).split(" ")[0];
 		
 		request.setAttribute("today", today);
 		request.setAttribute("daysAgo1", daysAgo1);
@@ -81,9 +81,9 @@ public class RegisterServlet extends HttpServlet{
 		item.setPhoto(filename);
 //		photoを登録する
 		File file = new File(path+File.separator+filename);
-		String unixtime10 = model.CalendarDate.StrUnixtimeNow();
+		String unixtime10 = jp.IgatatApps.LostItemManager.model.CalendarDate.StrUnixtimeNow();
 		try{
-			model.S3AO.PutPhotoObject(unixtime10, file);
+			jp.IgatatApps.LostItemManager.model.S3AO.PutPhotoObject(unixtime10, file);
 		}catch(Exception f) {
 			System.out.println(f.getMessage());
 			System.out.println("Failed to upload Photographs.");
@@ -106,7 +106,7 @@ public class RegisterServlet extends HttpServlet{
 			response.sendRedirect("./Top");
 		}
 		item.setItem_kind(item_kind);
-		String word_item_kind = model.DAO.SelectStrItemKindByIntItemKind(item_kind);
+		String word_item_kind = jp.IgatatApps.LostItemManager.model.DAO.SelectStrItemKindByIntItemKind(item_kind);
 		item.setStr_item_kind(word_item_kind);
 		
 		String str_found_place = request.getParameter("found_place");
@@ -121,22 +121,22 @@ public class RegisterServlet extends HttpServlet{
 			response.sendRedirect("./Top");
 		}
 		item.setFound_place(found_place);
-		String word_found_place = model.DAO.SelectStrFoundPlaceByIntFoundPlace(found_place);
+		String word_found_place = jp.IgatatApps.LostItemManager.model.DAO.SelectStrFoundPlaceByIntFoundPlace(found_place);
 		item.setStr_found_place(word_found_place);
 		
 		
 		String day_found_at = request.getParameter("found_at");
 		if(day_found_at == null) {
-			day_found_at = model.CalendarDate.StrDatetimeNow().split(" ")[0];
+			day_found_at = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeNow().split(" ")[0];
 		}
-		String time_found_at = model.CalendarDate.StrDatetimeNow().split(" ")[1];
+		String time_found_at = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeNow().split(" ")[1];
 		String found_at = day_found_at +" " + time_found_at;
 		item.setFound_at(found_at);
 		
 
 		
 		
-		String posted_at = model.CalendarDate.StrDatetimeNow();
+		String posted_at = jp.IgatatApps.LostItemManager.model.CalendarDate.StrDatetimeNow();
 		item.setPosted_at(posted_at);
 		
 		item.setDelete_flag(0);
