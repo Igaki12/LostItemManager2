@@ -12,7 +12,7 @@
   String searching_found_place = (String)request.getAttribute("found_place");
   String searching_found_at = (String)request.getAttribute("found_at");
   if(searching_item_kind == "" && searching_found_place == "" && searching_found_at == ""){
-	  searching_found_at = "条件なし";
+	  searching_found_at = "条件無し";
   }
 
 %>
